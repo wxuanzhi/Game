@@ -9,23 +9,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
     private GameView gameView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ImageView bLeft = findViewById(R.id.arrow_left);
-        bLeft.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
         findViews();
-
-
     }
 
     private void findViews() {
@@ -36,44 +26,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         gameView = findViewById(R.id.game);
     }
 
-    public void left(View view) {
-
-    }
-
-    public void right(View view) {
-
-    }
-
-    public void up(View view) {
-
-    }
-
-    public void down(View view) {
-
-    }
-
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.arrow_up:
                 Log.d("MainActivity", "onClick:UP");
-                gameView.setPosY(gameView.getY()-50);
-                gameView.invalidate();
+                gameView.moveUp();
                 break;
             case R.id.arrow_down:
                 Log.d("MainActivity", "onClick:UP");
-                gameView.setPosY(gameView.getY()+50);
-                gameView.invalidate();
+                gameView.moveDown();
                 break;
             case R.id.arrow_left:
                 Log.d("MainActivity", "onClick:UP");
-                gameView.setPosX(gameView.getX()-50);
-                gameView.invalidate();
+                gameView.moveLeft();
                 break;
             case R.id.arrow_right:
                 Log.d("MainActivity", "onClick:UP");
-                gameView.setPosX(gameView.getX()+50);
-                gameView.invalidate();
+                gameView.moveRight();
                 break;
         }
     }
